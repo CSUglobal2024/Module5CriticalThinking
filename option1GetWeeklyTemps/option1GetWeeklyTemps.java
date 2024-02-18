@@ -52,9 +52,16 @@ public class option1GetWeeklyTemps {
 	            } else if (input.equalsIgnoreCase("week")) {
 	                System.out.println("Weekly average temperature: " + weeklyAverage + " degrees");
 	            } else {
-	                int index = daysOfWeek.indexOf(input);
+	            	String inputLowerCase = input.toLowerCase(); // Convert input to lowercase
+	                int index = -1;
+	                for (int i = 0; i < daysOfWeek.size(); i++) {
+	                    if (daysOfWeek.get(i).equalsIgnoreCase(inputLowerCase)) { // Compare ignoring case
+	                        index = i;
+	                        break;
+	                    }
+	                }
 	                if (index != -1) {
-	                    System.out.println("Temperature on " + input + ": " + temperatures.get(index) + " degrees");
+	                    System.out.println("Temperature on " + daysOfWeek.get(index) + ": " + temperatures.get(index) + " degrees");
 	                } else {
 	                    System.out.println("Invalid input. Please enter a valid day of the week (e.g., Monday) or 'week'.");
 	                }
